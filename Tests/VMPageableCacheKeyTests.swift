@@ -10,7 +10,7 @@ import XCTest
 
 class VMPageableCacheKeyTests: XCTestCase {
 
-  func test_pageable_cache_key() {
+  func test_pageableCacheKey() {
     let limit = 10
     let offset = 10
     
