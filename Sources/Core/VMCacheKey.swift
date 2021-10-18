@@ -9,11 +9,6 @@
 
 import Foundation
 
-public protocol VMCacheKeyProtocol {
-  
-  var keyValue: String { get }
-}
-
 public struct VMCacheKey: Hashable, VMCacheKeyProtocol {
   
   public let keyValue: String

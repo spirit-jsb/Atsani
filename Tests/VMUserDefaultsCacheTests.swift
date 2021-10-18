@@ -6,7 +6,6 @@
 //
 
 import XCTest
-
 @testable import Atsani
 
 class VMUserDefaultsCacheTests: XCTestCase {

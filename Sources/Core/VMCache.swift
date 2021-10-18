@@ -9,18 +9,27 @@
 
 import Foundation
 
-public protocol VMCacheProtocol {
+public struct VMCache {
   
-  // 缓存数据
-  func cache<Value: Codable>(forKey key: VMCacheKey, value: Value, cacheDate: Date)
-  // 失效缓存数据
-  func invalidate(forKey key: VMCacheKey)
+  public static var inMemory: VMCache {
+    return .init(cacheWrapper: VMInMemoryCache.shared)
+  }
   
-  // 获取缓存数据
-  func fetchCache<Value: Codable>(forKey key: VMCacheKey) -> Value?
+  public static var userDefaults: VMCache {
+    return .init(cacheWrapper: VMUserDefaultsCache.shared)
+  }
   
-  // 验证缓存数据是否有效
-  func isCacheValueValid(forKey key: VMCacheKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool
+  public private(set) static var global: VMCacheProtocol = VMCache.inMemory.cacheWrapper
+  
+  private let cacheWrapper: VMCacheProtocol
+  
+  public init(cacheWrapper: VMCacheProtocol) {
+    self.cacheWrapper = cacheWrapper
+  }
+  
+  public static func setGlobal(_ cache: VMCache) {
+    self.global = cache.cacheWrapper
+  }
 }
 
 #endif
