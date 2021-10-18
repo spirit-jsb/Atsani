@@ -6,11 +6,50 @@
 	objectVersion = 55;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		502EB58B271D1089003D89FC /* VMCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB58A271D1089003D89FC /* VMCache.swift */; };
+		502EB58D271D1237003D89FC /* VMCacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB58C271D1237003D89FC /* VMCacheKey.swift */; };
+		502EB58F271D15E5003D89FC /* VMInMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */; };
+		502EB591271D15FF003D89FC /* VMUserDefaultsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB590271D15FF003D89FC /* VMUserDefaultsCache.swift */; };
+		502EB593271D249B003D89FC /* VMCacheConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB592271D249B003D89FC /* VMCacheConfiguration.swift */; };
+		502EB59C271D4EF7003D89FC /* Atsani.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509109B5271B083400174E4D /* Atsani.framework */; platformFilter = ios; };
+		502EB5A7271D4F4F003D89FC /* VMInMemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB5A6271D4F4F003D89FC /* VMInMemoryCacheTests.swift */; };
+		502EB5A9271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB5A8271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift */; };
+		502EB5AD271D555C003D89FC /* String+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB5AB271D522B003D89FC /* String+Tests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		502EB59D271D4EF7003D89FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 509109AC271B083400174E4D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 509109B4271B083400174E4D;
+			remoteInfo = Atsani;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		502EB58A271D1089003D89FC /* VMCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCache.swift; sourceTree = "<group>"; };
+		502EB58C271D1237003D89FC /* VMCacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheKey.swift; sourceTree = "<group>"; };
+		502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMInMemoryCache.swift; sourceTree = "<group>"; };
+		502EB590271D15FF003D89FC /* VMUserDefaultsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMUserDefaultsCache.swift; sourceTree = "<group>"; };
+		502EB592271D249B003D89FC /* VMCacheConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheConfiguration.swift; sourceTree = "<group>"; };
+		502EB598271D4EF7003D89FC /* AtsaniTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtsaniTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		502EB5A6271D4F4F003D89FC /* VMInMemoryCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMInMemoryCacheTests.swift; sourceTree = "<group>"; };
+		502EB5A8271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMUserDefaultsCacheTests.swift; sourceTree = "<group>"; };
+		502EB5AB271D522B003D89FC /* String+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Tests.swift"; sourceTree = "<group>"; };
 		509109B5271B083400174E4D /* Atsani.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atsani.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		502EB595271D4EF7003D89FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				502EB59C271D4EF7003D89FC /* Atsani.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		509109B2271B083400174E4D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -21,10 +60,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		502EB588271D105A003D89FC /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				502EB58A271D1089003D89FC /* VMCache.swift */,
+				502EB592271D249B003D89FC /* VMCacheConfiguration.swift */,
+				502EB58C271D1237003D89FC /* VMCacheKey.swift */,
+				502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */,
+				502EB590271D15FF003D89FC /* VMUserDefaultsCache.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		502EB599271D4EF7003D89FC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				502EB5AA271D5219003D89FC /* Utils */,
+				502EB5A6271D4F4F003D89FC /* VMInMemoryCacheTests.swift */,
+				502EB5A8271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		502EB5AA271D5219003D89FC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				502EB5AB271D522B003D89FC /* String+Tests.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		509109AB271B083400174E4D = {
 			isa = PBXGroup;
 			children = (
 				509109BF271B085E00174E4D /* Sources */,
+				502EB599271D4EF7003D89FC /* Tests */,
 				509109B6271B083400174E4D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -33,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				509109B5271B083400174E4D /* Atsani.framework */,
+				502EB598271D4EF7003D89FC /* AtsaniTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -40,6 +111,7 @@
 		509109BF271B085E00174E4D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				502EB588271D105A003D89FC /* Core */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -57,6 +129,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		502EB597271D4EF7003D89FC /* AtsaniTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 502EB59F271D4EF7003D89FC /* Build configuration list for PBXNativeTarget "AtsaniTests" */;
+			buildPhases = (
+				502EB594271D4EF7003D89FC /* Sources */,
+				502EB595271D4EF7003D89FC /* Frameworks */,
+				502EB596271D4EF7003D89FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				502EB59E271D4EF7003D89FC /* PBXTargetDependency */,
+			);
+			name = AtsaniTests;
+			productName = AtsaniTests;
+			productReference = 502EB598271D4EF7003D89FC /* AtsaniTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		509109B4271B083400174E4D /* Atsani */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 509109BC271B083400174E4D /* Build configuration list for PBXNativeTarget "Atsani" */;
@@ -82,10 +172,16 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
+					502EB597271D4EF7003D89FC = {
+						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
+					};
 					509109B4271B083400174E4D = {
 						CreatedOnToolsVersion = 13.0;
+						LastSwiftMigration = 1300;
 					};
 				};
 			};
@@ -103,11 +199,19 @@
 			projectRoot = "";
 			targets = (
 				509109B4271B083400174E4D /* Atsani */,
+				502EB597271D4EF7003D89FC /* AtsaniTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		502EB596271D4EF7003D89FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		509109B3271B083400174E4D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -118,16 +222,85 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		502EB594271D4EF7003D89FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				502EB5A9271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift in Sources */,
+				502EB5A7271D4F4F003D89FC /* VMInMemoryCacheTests.swift in Sources */,
+				502EB5AD271D555C003D89FC /* String+Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		509109B1271B083400174E4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				502EB58B271D1089003D89FC /* VMCache.swift in Sources */,
+				502EB58D271D1237003D89FC /* VMCacheKey.swift in Sources */,
+				502EB593271D249B003D89FC /* VMCacheConfiguration.swift in Sources */,
+				502EB591271D15FF003D89FC /* VMUserDefaultsCache.swift in Sources */,
+				502EB58F271D15E5003D89FC /* VMInMemoryCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		502EB59E271D4EF7003D89FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			platformFilter = ios;
+			target = 509109B4271B083400174E4D /* Atsani */;
+			targetProxy = 502EB59D271D4EF7003D89FC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		502EB5A0271D4EF7003D89FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.max.jian.test.AtsaniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		502EB5A1271D4EF7003D89FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.max.jian.test.AtsaniTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
 		509109BA271B083400174E4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -254,6 +427,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -274,6 +448,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -283,6 +458,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -311,6 +487,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		502EB59F271D4EF7003D89FC /* Build configuration list for PBXNativeTarget "AtsaniTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				502EB5A0271D4EF7003D89FC /* Debug */,
+				502EB5A1271D4EF7003D89FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		509109AF271B083400174E4D /* Build configuration list for PBXProject "Atsani" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
