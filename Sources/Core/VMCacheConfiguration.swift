@@ -22,6 +22,8 @@ public struct VMCacheConfiguration {
     case useThenLoad            /// 优先使用缓存数据, 而后发起查询请求
   }
   
+  public static let `default` = VMCacheConfiguration(invalidationPolicy: .notInvalidation, usagePolicy: .useWhenLoadFails)
+  
   let invalidationPolicy: InvalidationPolicy
   let usagePolicy: UsagePolicy
   
