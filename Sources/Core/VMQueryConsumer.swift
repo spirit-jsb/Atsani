@@ -11,9 +11,7 @@ import Foundation
 import Combine
 
 public final class VMQueryConsumer<Request, Response: Codable>: ObservableObject, VMQueryProtocol {
-  
-  public typealias CacheKeyHandler = (VMCacheKey, Request) -> VMCacheKey
-  
+    
   @Published public private(set) var state: VMQueryState<Response> = .idle
   
   public var statePublisher: AnyPublisher<VMQueryState<Response>, Never> {

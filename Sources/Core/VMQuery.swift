@@ -16,7 +16,7 @@ public final class VMQuery<Request, Response: Codable>: ObservableObject, VMQuer
   public typealias Querier = (Request) -> AnyPublisher<Response, Error>
   
   public enum QueryBehavior {
-    case startWhenRequested
+    case startWhenRequery
     case startImmediately(Request)
   }
   
@@ -36,6 +36,7 @@ public final class VMQuery<Request, Response: Codable>: ObservableObject, VMQuer
   private let cacheKeyHandler: CacheKeyHandler
   private let cache: VMCacheProtocol
   private let cacheConfiguration: VMCacheConfiguration
+  
   private let querier: Querier
   
   private var lastRequest: Request?
@@ -46,8 +47,8 @@ public final class VMQuery<Request, Response: Codable>: ObservableObject, VMQuer
     cacheKey: VMCacheKey,
     cacheKeyHandler: @escaping CacheKeyHandler = { (cacheKey, _) in cacheKey },
     cache: VMCacheProtocol = VMUserDefaultsCache.shared,
-    cacheConfiguration: VMCacheConfiguration = VMCacheConfiguration.default,
-    queryBehavior: QueryBehavior = .startWhenRequested,
+    cacheConfiguration: VMCacheConfiguration = VMCacheConfiguration.`default`,
+    queryBehavior: QueryBehavior = .startWhenRequery,
     querier: @escaping Querier
   ) {
     self.cacheKey = cacheKey
@@ -65,16 +66,22 @@ public final class VMQuery<Request, Response: Codable>: ObservableObject, VMQuer
     VMQueryRegistry.shared.unregister(forKey: self.cacheKey)
   }
   
+  public func requery(forRequest request: Request) {
+    self.lastRequest = request
+    
+    if self.cacheConfiguration.usagePolicy == .useWhenLoadFails {
+      self.state = .loading
+    }
+    
+    self.performQuery(forRequest: request)
+  }
+  
   private func startQuery(withQueryBehavior queryBehavior: QueryBehavior) {
     switch queryBehavior {
-      case .startWhenRequested:
-        if self.cacheConfiguration.usagePolicy == .useDontLoad || self.cacheConfiguration.usagePolicy == .useThenLoad {
-          if let cachedResponse = self.getCacheIfPossibly(forKey: self.cacheKey) {
-            self.state = .success(cachedResponse)
-          }
-        }
+      case .startWhenRequery:
+        break
       case .startImmediately(let request):
-        self.reQuery(forRequest: request)
+        self.requery(forRequest: request)
     }
   }
   
@@ -85,19 +92,15 @@ public final class VMQuery<Request, Response: Codable>: ObservableObject, VMQuer
   private func getCacheIfPossibly(forKey key: VMCacheKey) -> Response? {
     return self.isCacheValueValid(forKey: key) ? self.cache.fetchCache(forKey: key) : nil
   }
-  
-  private func reQuery(forRequest request: Request) {
-    self.lastRequest = request
     
-    if self.cacheConfiguration.usagePolicy == .useWhenLoadFails {
-      self.state = .loading
-    }
-    
-    self.performQuery(forRequest: request)
-  }
-  
   private func performQuery(forRequest request: Request) {
     let cacheKey = self.cacheKeyHandler(self.cacheKey, request)
+    
+    if self.cacheConfiguration.usagePolicy == .useDontLoad || self.cacheConfiguration.usagePolicy == .useThenLoad {
+      if let cachedResponse = self.getCacheIfPossibly(forKey: self.cacheKey) {
+        self.state = .success(cachedResponse)
+      }
+    }
     
     if self.cacheConfiguration.usagePolicy == .useDontLoad, let cachedResponse = self.getCacheIfPossibly(forKey: self.cacheKey) {
       self.state = .success(cachedResponse)

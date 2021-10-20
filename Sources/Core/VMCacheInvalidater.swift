@@ -1,5 +1,5 @@
 //
-//  VMCacheInvalidator.swift
+//  VMCacheInvalidater.swift
 //  Atsani
 //
 //  Created by max on 2021/10/19.
@@ -10,6 +10,8 @@
 import Foundation
 import Combine
 
-
+public struct VMCacheInvalidater {
+  
+}
 
 #endif

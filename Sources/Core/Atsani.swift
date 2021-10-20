@@ -44,4 +44,9 @@ public protocol VMPageableCacheKeyProtocol: VMCacheKeyProtocol {
   var next: VMPageableCacheKeyProtocol { get }
 }
 
+public protocol VMQueryInvalidationListenerProtocol {
+  
+  associatedtype Request
+}
+
 #endif

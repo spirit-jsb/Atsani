@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50000B08271EA21C00B9660C /* VMCacheInvalidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B07271EA21C00B9660C /* VMCacheInvalidator.swift */; };
+		50000B08271EA21C00B9660C /* VMCacheInvalidater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B07271EA21C00B9660C /* VMCacheInvalidater.swift */; };
 		50000B0A271EA5BA00B9660C /* VMQueryConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B09271EA5BA00B9660C /* VMQueryConsumer.swift */; };
 		50000B0C271EA69400B9660C /* VMQueryRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B0B271EA69400B9660C /* VMQueryRegistry.swift */; };
 		50000B0F271EB9E700B9660C /* VMAnyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B0E271EB9E700B9660C /* VMAnyQuery.swift */; };
@@ -40,7 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		50000B07271EA21C00B9660C /* VMCacheInvalidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheInvalidator.swift; sourceTree = "<group>"; };
+		50000B07271EA21C00B9660C /* VMCacheInvalidater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheInvalidater.swift; sourceTree = "<group>"; };
 		50000B09271EA5BA00B9660C /* VMQueryConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryConsumer.swift; sourceTree = "<group>"; };
 		50000B0B271EA69400B9660C /* VMQueryRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryRegistry.swift; sourceTree = "<group>"; };
 		50000B0E271EB9E700B9660C /* VMAnyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAnyQuery.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 				502EB5B7271D6194003D89FC /* Atsani.swift */,
 				50000B0E271EB9E700B9660C /* VMAnyQuery.swift */,
 				502EB592271D249B003D89FC /* VMCacheConfiguration.swift */,
-				50000B07271EA21C00B9660C /* VMCacheInvalidator.swift */,
+				50000B07271EA21C00B9660C /* VMCacheInvalidater.swift */,
 				502EB58C271D1237003D89FC /* VMCacheKey.swift */,
 				502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */,
 				502EB5B9271D6312003D89FC /* VMPageableCacheKey.swift */,
@@ -289,7 +289,7 @@
 				502EB58F271D15E5003D89FC /* VMInMemoryCache.swift in Sources */,
 				502EB5AF271D5852003D89FC /* VMQuery.swift in Sources */,
 				50000B0A271EA5BA00B9660C /* VMQueryConsumer.swift in Sources */,
-				50000B08271EA21C00B9660C /* VMCacheInvalidator.swift in Sources */,
+				50000B08271EA21C00B9660C /* VMCacheInvalidater.swift in Sources */,
 				502EB5B1271D5AC4003D89FC /* VMQueryState.swift in Sources */,
 				502EB5BA271D6312003D89FC /* VMPageableCacheKey.swift in Sources */,
 				502EB5B8271D6194003D89FC /* Atsani.swift in Sources */,
