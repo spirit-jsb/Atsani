@@ -12,11 +12,22 @@ import Combine
 
 public protocol VMQueryProtocol {
   
-  associatedtype Request
+  associatedtype RequestContext
   associatedtype Response
   
   var state: VMQueryState<Response> { get }
   var statePublisher: AnyPublisher<VMQueryState<Response>, Never> { get }
+}
+
+public protocol VMCacheKeyProtocol {
+  
+  var keyValue: String { get }
+}
+
+public protocol VMPageableCacheKeyProtocol: VMCacheKeyProtocol {
+  
+  var firstPage: Self { get }
+  var nextPage: Self { get }
 }
 
 public protocol VMCacheProtocol {
@@ -31,22 +42,6 @@ public protocol VMCacheProtocol {
   
   // 验证缓存数据是否有效
   func isCacheValueValid(forKey key: VMCacheKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool
-}
-
-public protocol VMCacheKeyProtocol {
-  
-  var keyValue: String { get }
-}
-
-public protocol VMPageableCacheKeyProtocol: VMCacheKeyProtocol {
-  
-  var first: VMPageableCacheKeyProtocol { get }
-  var next: VMPageableCacheKeyProtocol { get }
-}
-
-public protocol VMQueryInvalidationListenerProtocol {
-  
-  associatedtype Request
 }
 
 #endif

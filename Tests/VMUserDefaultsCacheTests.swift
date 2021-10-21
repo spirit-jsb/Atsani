@@ -9,7 +9,7 @@ import XCTest
 @testable import Atsani
 
 class VMUserDefaultsCacheTests: XCTestCase {
-
+  
   func test_userDefaultsCache() {
     let userDefaultsCache = VMUserDefaultsCache.shared
     

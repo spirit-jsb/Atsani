@@ -8,7 +8,7 @@
 #if canImport(Foundation)
 
 import Foundation
- 
+
 public struct VMCacheConfiguration {
   
   public enum InvalidationPolicy {

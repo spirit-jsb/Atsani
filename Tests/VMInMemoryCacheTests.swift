@@ -9,7 +9,7 @@ import XCTest
 @testable import Atsani
 
 class VMInMemoryCacheTests: XCTestCase {
-
+  
   func test_inMemoryCache() {
     let inMemoryCache = VMInMemoryCache.shared
     
@@ -76,7 +76,7 @@ class VMInMemoryCacheTests: XCTestCase {
     
     XCTAssertFalse(isCacheValueValid)
     
-    // 失效缓存后发起缓存验证
+    // 失效缓存后发起缓存验证 (缓存为 nil)
     inMemoryCache.invalidate(forKey: key)
     isCacheValueValid = inMemoryCache.isCacheValueValid(forKey: key, validDate: validDate, invalidationPolicy: .expire(10))
     

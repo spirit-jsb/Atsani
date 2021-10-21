@@ -10,7 +10,7 @@
 import Foundation
 import Combine
 
-public final class VMAnyQuery<Request, Response>: VMQueryProtocol {
+public final class VMAnyQuery<RequestContext, Response>: VMQueryProtocol {
   
   typealias StateProvider = () -> VMQueryState<Response>
   typealias StatePublisherProvider = () -> AnyPublisher<VMQueryState<Response>, Never>

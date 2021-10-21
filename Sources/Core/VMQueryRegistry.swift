@@ -13,22 +13,22 @@ class VMQueryRegistry {
   
   static let shared = VMQueryRegistry()
   
-  private var registries: [VMCacheKey: Any] = [:]
+  private var registries: [String: Any] = [:]
   
   init() {
     
   }
   
-  func register<Request, Response>(forKey key: VMCacheKey, anyQuery: VMAnyQuery<Request, Response>) {
-    self.registries[key] = anyQuery
-  }
-   
-  func unregister(forKey key: VMCacheKey) {
-    self.registries.removeValue(forKey: key)
+  func register<RequestContext, Response>(forIdentifier identifier: String, anyQuery: VMAnyQuery<RequestContext, Response>) {
+    self.registries[identifier] = anyQuery
   }
   
-  func fetchAnyQuery<Request, Response>(forKey key: VMCacheKey) -> VMAnyQuery<Request, Response>? {
-    return self.registries[key] as? VMAnyQuery<Request, Response>
+  func unregister(forIdentifier identifier: String) {
+    self.registries.removeValue(forKey: identifier)
+  }
+  
+  func fetchAnyQuery<RequestContext, Response>(forIdentifier identifier: String) -> VMAnyQuery<RequestContext, Response>? {
+    return self.registries[identifier] as? VMAnyQuery<RequestContext, Response>
   }
 }
 

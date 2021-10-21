@@ -9,7 +9,7 @@ import XCTest
 @testable import Atsani
 
 class VMPageableCacheKeyTests: XCTestCase {
-
+  
   func test_pageableCacheKey() {
     let limit = 10
     let offset = 10
@@ -17,10 +17,10 @@ class VMPageableCacheKeyTests: XCTestCase {
     let pageableCacheKey = VMPageableCacheKey(limit: limit, offset: offset)
     XCTAssertEqual(pageableCacheKey.keyValue, "\(limit)_\(offset)")
     
-    let nextPageableCacheKey = pageableCacheKey.next
+    let nextPageableCacheKey = pageableCacheKey.nextPage
     XCTAssertEqual(nextPageableCacheKey.keyValue, "\(limit)_\(offset + limit)")
     
-    let firstPageableCacheKey = pageableCacheKey.first
+    let firstPageableCacheKey = pageableCacheKey.firstPage
     XCTAssertEqual(firstPageableCacheKey.keyValue, "\(limit)_0")
   }
 }

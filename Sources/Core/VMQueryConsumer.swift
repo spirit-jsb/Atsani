@@ -10,32 +10,34 @@
 import Foundation
 import Combine
 
-public final class VMQueryConsumer<Request, Response: Codable>: ObservableObject, VMQueryProtocol {
-    
-  @Published public private(set) var state: VMQueryState<Response> = .idle
+public final class VMQueryConsumer<RequestContext, Response: Codable>: ObservableObject, VMQueryProtocol {
+  
+  public var state: VMQueryState<Response> {
+    return self.anyQuery.state
+  }
   
   public var statePublisher: AnyPublisher<VMQueryState<Response>, Never> {
-    return self.$state.eraseToAnyPublisher()
+    return self.anyQuery.statePublisher.eraseToAnyPublisher()
   }
   
   public var valuePublisher: AnyPublisher<Response, Never> {
-    return self.$state
+    return self.anyQuery.statePublisher
       .compactMap { $0.value }
       .eraseToAnyPublisher()
   }
   
-  private let cacheKey: VMCacheKey
+  private let queryIdentifier: String
   
-  private let anyQuery: VMAnyQuery<Request, Response>?
+  private let anyQuery: VMAnyQuery<RequestContext, Response>
   
   private var cancellables = Set<AnyCancellable>()
   
-  public init(cacheKey: VMCacheKey) {
-    self.cacheKey = cacheKey
+  public init(queryIdentifier: String) {
+    self.queryIdentifier = queryIdentifier
     
-    self.anyQuery = VMQueryRegistry.shared.fetchAnyQuery(forKey: cacheKey)
+    self.anyQuery = VMQueryRegistry.shared.fetchAnyQuery(forIdentifier: queryIdentifier)!
     
-    self.anyQuery?.statePublisher
+    self.anyQuery.statePublisher
       .sink { [weak self] (_) in
         self?.objectWillChange.send()
       }
