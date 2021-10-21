@@ -18,11 +18,11 @@ public struct VMPageableCacheKey: VMPageableCacheKeyProtocol {
     return "\(self.limit)_\(self.offset)"
   }
   
-  public var firstPage: Self {
+  public var first: Self {
     return VMPageableCacheKey(limit: self.limit, offset: 0)
   }
   
-  public var nextPage: Self {
+  public var next: Self {
     return VMPageableCacheKey(limit: self.limit, offset: self.offset + self.limit)
   }
   

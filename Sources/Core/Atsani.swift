@@ -26,8 +26,8 @@ public protocol VMCacheKeyProtocol {
 
 public protocol VMPageableCacheKeyProtocol: VMCacheKeyProtocol {
   
-  var firstPage: Self { get }
-  var nextPage: Self { get }
+  var first: Self { get }
+  var next: Self { get }
 }
 
 public protocol VMCacheProtocol {

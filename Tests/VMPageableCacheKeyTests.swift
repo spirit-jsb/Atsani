@@ -17,10 +17,10 @@ class VMPageableCacheKeyTests: XCTestCase {
     let pageableCacheKey = VMPageableCacheKey(limit: limit, offset: offset)
     XCTAssertEqual(pageableCacheKey.keyValue, "\(limit)_\(offset)")
     
-    let nextPageableCacheKey = pageableCacheKey.nextPage
+    let nextPageableCacheKey = pageableCacheKey.next
     XCTAssertEqual(nextPageableCacheKey.keyValue, "\(limit)_\(offset + limit)")
     
-    let firstPageableCacheKey = pageableCacheKey.firstPage
+    let firstPageableCacheKey = pageableCacheKey.first
     XCTAssertEqual(firstPageableCacheKey.keyValue, "\(limit)_0")
   }
 }
