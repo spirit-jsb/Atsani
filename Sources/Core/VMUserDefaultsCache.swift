@@ -17,7 +17,7 @@ public final class VMUserDefaultsCache: VMCacheProtocol {
     
   }
   
-  public func cache<Value>(forKey key: VMCacheKey, value: Value, cacheDate: Date) where Value : Decodable, Value : Encodable {
+  public func cache<Value>(forKey key: AtsaniKey, value: Value, cacheDate: Date) where Value : Decodable, Value : Encodable {
     guard let data = try? JSONEncoder().encode(value) else {
       return
     }
@@ -27,12 +27,12 @@ public final class VMUserDefaultsCache: VMCacheProtocol {
     UserDefaults.standard.synchronize()
   }
   
-  public func invalidate(forKey key: VMCacheKey) {
+  public func invalidate(forKey key: AtsaniKey) {
     UserDefaults.standard.removeObject(forKey: key.keyValue)
     UserDefaults.standard.removeObject(forKey: key.cacheDateKeyValue)
   }
   
-  public func fetchCache<Value>(forKey key: VMCacheKey) -> Value? where Value : Decodable, Value : Encodable {
+  public func fetchCache<Value>(forKey key: AtsaniKey) -> Value? where Value : Decodable, Value : Encodable {
     guard let data = UserDefaults.standard.data(forKey: key.keyValue) else {
       return nil
     }
@@ -40,7 +40,7 @@ public final class VMUserDefaultsCache: VMCacheProtocol {
     return try? JSONDecoder().decode(Value.self, from: data)
   }
   
-  public func isCacheValueValid(forKey key: VMCacheKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
+  public func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
     switch invalidationPolicy {
       case .notInvalidation:
         return true
@@ -59,7 +59,7 @@ public final class VMUserDefaultsCache: VMCacheProtocol {
   }
 }
 
-fileprivate extension VMCacheKey {
+fileprivate extension AtsaniKey {
   
   var cacheDateKeyValue: String {
     return self.keyValue.appending("_cache_date")

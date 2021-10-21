@@ -13,7 +13,7 @@ class VMInMemoryCacheTests: XCTestCase {
   func test_inMemoryCache() {
     let inMemoryCache = VMInMemoryCache.shared
     
-    let key: VMCacheKey = .init(value: "com.max.jian.Atsani.unit.test")
+    let key: AtsaniKey = .init(value: "com.max.jian.Atsani.unit.test")
     let value: String = #function + String.random(length: 10)
     let cacheDate = Date()
     
@@ -29,7 +29,7 @@ class VMInMemoryCacheTests: XCTestCase {
   func test_inMemoryCache_invalidate() {
     let inMemoryCache = VMInMemoryCache.shared
     
-    let key: VMCacheKey = .init(value: "com.max.jian.Atsani.unit.test")
+    let key: AtsaniKey = .init(value: "com.max.jian.Atsani.unit.test")
     let value: String = #function + String.random(length: 10)
     let cacheDate = Date()
     
@@ -53,7 +53,7 @@ class VMInMemoryCacheTests: XCTestCase {
   func test_inMemoryCache_is_cache_value_valid() {
     let inMemoryCache = VMInMemoryCache.shared
     
-    let key: VMCacheKey = .init(value: "com.max.jian.Atsani.unit.test")
+    let key: AtsaniKey = .init(value: "com.max.jian.Atsani.unit.test")
     let value: String = #function + String.random(length: 10)
     let cacheDate = Date()
     

@@ -1,15 +1,15 @@
 //
-//  VMCacheKey.swift
+//  AtsaniKey.swift
 //  Atsani
 //
-//  Created by max on 2021/10/18.
+//  Created by max on 2021/10/21.
 //
 
 #if canImport(Foundation)
 
 import Foundation
 
-public struct VMCacheKey: Hashable, VMCacheKeyProtocol {
+public struct AtsaniKey: Hashable, AtsaniKeyProtocol {
   
   public let keyValue: String
   

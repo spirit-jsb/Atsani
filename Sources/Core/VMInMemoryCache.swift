@@ -13,25 +13,25 @@ public final class VMInMemoryCache: VMCacheProtocol {
   
   public static let shared = VMInMemoryCache()
   
-  private var caches: [VMCacheKey: (value: Any?, cacheDate: Date)] = [:]
+  private var caches: [AtsaniKey: (value: Any?, cacheDate: Date)] = [:]
   
   private init() {
     
   }
   
-  public func cache<Value>(forKey key: VMCacheKey, value: Value, cacheDate: Date) where Value : Decodable, Value : Encodable {
+  public func cache<Value>(forKey key: AtsaniKey, value: Value, cacheDate: Date) where Value : Decodable, Value : Encodable {
     self.caches[key] = (value: value, cacheDate: cacheDate)
   }
   
-  public func invalidate(forKey key: VMCacheKey) {
+  public func invalidate(forKey key: AtsaniKey) {
     self.caches[key] = nil
   }
   
-  public func fetchCache<Value>(forKey key: VMCacheKey) -> Value? where Value : Decodable, Value : Encodable {
+  public func fetchCache<Value>(forKey key: AtsaniKey) -> Value? where Value : Decodable, Value : Encodable {
     return self.caches[key]?.value as? Value
   }
   
-  public func isCacheValueValid(forKey key: VMCacheKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
+  public func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
     switch invalidationPolicy {
       case .notInvalidation:
         return true

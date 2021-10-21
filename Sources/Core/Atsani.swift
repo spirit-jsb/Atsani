@@ -10,6 +10,11 @@
 import Foundation
 import Combine
 
+public protocol AtsaniKeyProtocol {
+  
+  var keyValue: String { get }
+}
+
 public protocol VMQueryProtocol {
   
   associatedtype RequestContext
@@ -19,12 +24,7 @@ public protocol VMQueryProtocol {
   var statePublisher: AnyPublisher<VMQueryState<Response>, Never> { get }
 }
 
-public protocol VMCacheKeyProtocol {
-  
-  var keyValue: String { get }
-}
-
-public protocol VMPageableCacheKeyProtocol: VMCacheKeyProtocol {
+public protocol VMPageableCacheKeyProtocol: AtsaniKeyProtocol {
   
   var first: Self { get }
   var next: Self { get }
@@ -33,15 +33,15 @@ public protocol VMPageableCacheKeyProtocol: VMCacheKeyProtocol {
 public protocol VMCacheProtocol {
   
   // 缓存数据
-  func cache<Value: Codable>(forKey key: VMCacheKey, value: Value, cacheDate: Date)
+  func cache<Value: Codable>(forKey key: AtsaniKey, value: Value, cacheDate: Date)
   // 失效缓存数据
-  func invalidate(forKey key: VMCacheKey)
+  func invalidate(forKey key: AtsaniKey)
   
   // 获取缓存数据
-  func fetchCache<Value: Codable>(forKey key: VMCacheKey) -> Value?
+  func fetchCache<Value: Codable>(forKey key: AtsaniKey) -> Value?
   
   // 验证缓存数据是否有效
-  func isCacheValueValid(forKey key: VMCacheKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool
+  func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool
 }
 
 #endif

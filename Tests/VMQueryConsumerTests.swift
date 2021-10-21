@@ -31,7 +31,7 @@ class VMQueryConsumerTests: XCTestCase {
     
     let queryRegistry = VMQueryRegistry.shared
     
-    let queryIdentifier = "com.max.jian.Atsani.unit.test"
+    let queryIdentifier = AtsaniKey(value: "com.max.jian.Atsani.unit.test")
     let anyQuery = VMAnyQuery<Void, String>(stateProvider: { self.testState }, statePublisherProvider: { self.testStatePublisher })
     
     // 注册

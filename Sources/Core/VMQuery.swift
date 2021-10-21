@@ -12,7 +12,7 @@ import Combine
 
 public final class VMQuery<RequestContext, Response: Codable>: ObservableObject, VMQueryProtocol {
   
-  public typealias CacheKeyHandler = (VMCacheKey, RequestContext) -> VMCacheKey
+  public typealias CacheKeyHandler = (AtsaniKey, RequestContext) -> AtsaniKey
   public typealias Querier = (RequestContext) -> AnyPublisher<Response, Error>
   
   public enum QueryBehavior {
@@ -32,9 +32,8 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
       .eraseToAnyPublisher()
   }
   
-  private let queryIdentifier: String
+  private let queryIdentifier: AtsaniKey
   
-  private let cacheKey: VMCacheKey
   private let cacheKeyHandler: CacheKeyHandler
   private let cache: VMCacheProtocol
   private let cacheConfiguration: VMCacheConfiguration
@@ -46,7 +45,7 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
   private var cancellables = Set<AnyCancellable>()
   
   public init(
-    queryIdentifier: String,
+    queryIdentifier: AtsaniKey,
     cacheKeyHandler: @escaping CacheKeyHandler = { (cacheKey, _) in cacheKey },
     cache: VMCacheProtocol = VMUserDefaultsCache.shared,
     cacheConfiguration: VMCacheConfiguration = VMCacheConfiguration.`default`,
@@ -55,7 +54,6 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
   ) {
     self.queryIdentifier = queryIdentifier
     
-    self.cacheKey = VMCacheKey(value: queryIdentifier)
     self.cacheKeyHandler = cacheKeyHandler
     self.cache = cache
     self.cacheConfiguration = cacheConfiguration
@@ -100,16 +98,16 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
     }
   }
   
-  private func isCacheValueValid(forKey key: VMCacheKey) -> Bool {
+  private func isCacheValueValid(forKey key: AtsaniKey) -> Bool {
     return self.cache.isCacheValueValid(forKey: key, validDate: Date(), invalidationPolicy: self.cacheConfiguration.invalidationPolicy)
   }
   
-  private func getCacheIfPossibly(forKey key: VMCacheKey) -> Response? {
+  private func getCacheIfPossibly(forKey key: AtsaniKey) -> Response? {
     return self.isCacheValueValid(forKey: key) ? self.cache.fetchCache(forKey: key) : nil
   }
   
   private func performQuery(forRequestContext requestContext: RequestContext) {
-    let cacheKey = self.cacheKeyHandler(self.cacheKey, requestContext)
+    let cacheKey = self.cacheKeyHandler(self.queryIdentifier, requestContext)
     
     if self.cacheConfiguration.usagePolicy == .useDontLoad || self.cacheConfiguration.usagePolicy == .useThenLoad {
       if let cachedResponse = self.getCacheIfPossibly(forKey: cacheKey) {

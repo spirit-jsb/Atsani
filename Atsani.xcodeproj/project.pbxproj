@@ -12,7 +12,6 @@
 		50000B0C271EA69400B9660C /* VMQueryRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B0B271EA69400B9660C /* VMQueryRegistry.swift */; };
 		50000B0F271EB9E700B9660C /* VMAnyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B0E271EB9E700B9660C /* VMAnyQuery.swift */; };
 		50000B11271ED05D00B9660C /* VMAnyQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B10271ED05D00B9660C /* VMAnyQueryTests.swift */; };
-		502EB58D271D1237003D89FC /* VMCacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB58C271D1237003D89FC /* VMCacheKey.swift */; };
 		502EB58F271D15E5003D89FC /* VMInMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */; };
 		502EB591271D15FF003D89FC /* VMUserDefaultsCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB590271D15FF003D89FC /* VMUserDefaultsCache.swift */; };
 		502EB593271D249B003D89FC /* VMCacheConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB592271D249B003D89FC /* VMCacheConfiguration.swift */; };
@@ -34,6 +33,7 @@
 		50BE982D272144A0001EC070 /* AtsaniTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982C272144A0001EC070 /* AtsaniTests.swift */; };
 		50BE982F27215CE5001EC070 /* VMQueryConsumerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982E27215CE5001EC070 /* VMQueryConsumerTests.swift */; };
 		50BE983127215E7C001EC070 /* VMQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983027215E7C001EC070 /* VMQueryTests.swift */; };
+		50BE983727216BF7001EC070 /* AtsaniKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983627216BF7001EC070 /* AtsaniKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,6 @@
 		50000B0B271EA69400B9660C /* VMQueryRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryRegistry.swift; sourceTree = "<group>"; };
 		50000B0E271EB9E700B9660C /* VMAnyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAnyQuery.swift; sourceTree = "<group>"; };
 		50000B10271ED05D00B9660C /* VMAnyQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAnyQueryTests.swift; sourceTree = "<group>"; };
-		502EB58C271D1237003D89FC /* VMCacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheKey.swift; sourceTree = "<group>"; };
 		502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMInMemoryCache.swift; sourceTree = "<group>"; };
 		502EB590271D15FF003D89FC /* VMUserDefaultsCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMUserDefaultsCache.swift; sourceTree = "<group>"; };
 		502EB592271D249B003D89FC /* VMCacheConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheConfiguration.swift; sourceTree = "<group>"; };
@@ -75,6 +74,7 @@
 		50BE982C272144A0001EC070 /* AtsaniTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtsaniTests.swift; sourceTree = "<group>"; };
 		50BE982E27215CE5001EC070 /* VMQueryConsumerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryConsumerTests.swift; sourceTree = "<group>"; };
 		50BE983027215E7C001EC070 /* VMQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryTests.swift; sourceTree = "<group>"; };
+		50BE983627216BF7001EC070 /* AtsaniKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtsaniKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,10 +102,10 @@
 			isa = PBXGroup;
 			children = (
 				502EB5B7271D6194003D89FC /* Atsani.swift */,
+				50BE983627216BF7001EC070 /* AtsaniKey.swift */,
 				50000B0E271EB9E700B9660C /* VMAnyQuery.swift */,
 				502EB592271D249B003D89FC /* VMCacheConfiguration.swift */,
 				50000B07271EA21C00B9660C /* VMCacheInvalidater.swift */,
-				502EB58C271D1237003D89FC /* VMCacheKey.swift */,
 				502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */,
 				502EB5B9271D6312003D89FC /* VMPageableCacheKey.swift */,
 				502EB5AE271D5852003D89FC /* VMQuery.swift */,
@@ -309,8 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				502EB58D271D1237003D89FC /* VMCacheKey.swift in Sources */,
 				502EB593271D249B003D89FC /* VMCacheConfiguration.swift in Sources */,
+				50BE983727216BF7001EC070 /* AtsaniKey.swift in Sources */,
 				502EB591271D15FF003D89FC /* VMUserDefaultsCache.swift in Sources */,
 				50000B0C271EA69400B9660C /* VMQueryRegistry.swift in Sources */,
 				50000B0F271EB9E700B9660C /* VMAnyQuery.swift in Sources */,

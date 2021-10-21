@@ -26,13 +26,13 @@ public final class VMQueryConsumer<RequestContext, Response: Codable>: Observabl
       .eraseToAnyPublisher()
   }
   
-  private let queryIdentifier: String
+  private let queryIdentifier: AtsaniKey
   
   private let anyQuery: VMAnyQuery<RequestContext, Response>
   
   private var cancellables = Set<AnyCancellable>()
   
-  public init(queryIdentifier: String) {
+  public init(queryIdentifier: AtsaniKey) {
     self.queryIdentifier = queryIdentifier
     
     self.anyQuery = VMQueryRegistry.shared.fetchAnyQuery(forIdentifier: queryIdentifier)!
