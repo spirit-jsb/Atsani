@@ -10,7 +10,7 @@
 import Foundation
 import Combine
 
-public final class VMQuery<RequestContext, Response: Codable>: ObservableObject, VMQueryProtocol {
+public final class VMQuery<RequestContext, Response: Codable>: ObservableObject, VMQueryProtocol, VMQueryInvalidateListener {
   
   public typealias CacheKeyHandler = (AtsaniKey, RequestContext) -> AtsaniKey
   public typealias Querier = (RequestContext) -> AnyPublisher<Response, Error>
@@ -61,6 +61,19 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
     self.querier = querier
     
     self.startQuery(withQueryBehavior: queryBehavior)
+    
+    self.queryInvalidateListener(forIdentifier: queryIdentifier)
+      .sink { [weak self] (invalidationRequestContext: VMQueryInvalidater<RequestContext>.InvalidationRequestContext) in
+        switch invalidationRequestContext {
+          case .last:
+            if let requestContext = self?.lastRequestContext {
+              self?.requery(forRequestContext: requestContext)
+            }
+          case .new(let requestContext):
+            self?.requery(forRequestContext: requestContext)
+        }
+      }
+      .store(in: &self.cancellables)
     
     VMQueryRegistry.shared.register(forIdentifier: queryIdentifier, anyQuery: self.eraseToAnyQuery())
   }

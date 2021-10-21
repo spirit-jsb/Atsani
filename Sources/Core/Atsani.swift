@@ -24,6 +24,11 @@ public protocol VMQueryProtocol {
   var statePublisher: AnyPublisher<VMQueryState<Response>, Never> { get }
 }
 
+public protocol VMQueryInvalidateListener {
+  
+  associatedtype RequestContext
+}
+
 public protocol VMPageableCacheKeyProtocol: AtsaniKeyProtocol {
   
   var first: Self { get }

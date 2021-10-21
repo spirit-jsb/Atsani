@@ -18,4 +18,11 @@ public struct AtsaniKey: Hashable, AtsaniKeyProtocol {
   }
 }
 
+internal extension AtsaniKey {
+  
+  var invalidateQuery: Notification.Name {
+    return .init(rawValue: "\(self.keyValue)_invalidate_query_notification")
+  }
+}
+
 #endif

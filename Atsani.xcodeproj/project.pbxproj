@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50000B08271EA21C00B9660C /* VMQueryInvalidater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B07271EA21C00B9660C /* VMQueryInvalidater.swift */; };
 		50000B0A271EA5BA00B9660C /* VMQueryConsumer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B09271EA5BA00B9660C /* VMQueryConsumer.swift */; };
 		50000B0C271EA69400B9660C /* VMQueryRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B0B271EA69400B9660C /* VMQueryRegistry.swift */; };
 		50000B0F271EB9E700B9660C /* VMAnyQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50000B0E271EB9E700B9660C /* VMAnyQuery.swift */; };
@@ -33,6 +34,7 @@
 		50BE982F27215CE5001EC070 /* VMQueryConsumerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982E27215CE5001EC070 /* VMQueryConsumerTests.swift */; };
 		50BE983127215E7C001EC070 /* VMQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983027215E7C001EC070 /* VMQueryTests.swift */; };
 		50BE983727216BF7001EC070 /* AtsaniKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983627216BF7001EC070 /* AtsaniKey.swift */; };
+		50BE983927217011001EC070 /* VMQueryInvalidaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983827217011001EC070 /* VMQueryInvalidaterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50000B07271EA21C00B9660C /* VMQueryInvalidater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryInvalidater.swift; sourceTree = "<group>"; };
 		50000B09271EA5BA00B9660C /* VMQueryConsumer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryConsumer.swift; sourceTree = "<group>"; };
 		50000B0B271EA69400B9660C /* VMQueryRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryRegistry.swift; sourceTree = "<group>"; };
 		50000B0E271EB9E700B9660C /* VMAnyQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMAnyQuery.swift; sourceTree = "<group>"; };
@@ -73,6 +76,7 @@
 		50BE982E27215CE5001EC070 /* VMQueryConsumerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryConsumerTests.swift; sourceTree = "<group>"; };
 		50BE983027215E7C001EC070 /* VMQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryTests.swift; sourceTree = "<group>"; };
 		50BE983627216BF7001EC070 /* AtsaniKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtsaniKey.swift; sourceTree = "<group>"; };
+		50BE983827217011001EC070 /* VMQueryInvalidaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryInvalidaterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,7 @@
 				502EB5B9271D6312003D89FC /* VMPageableCacheKey.swift */,
 				502EB5AE271D5852003D89FC /* VMQuery.swift */,
 				50000B09271EA5BA00B9660C /* VMQueryConsumer.swift */,
+				50000B07271EA21C00B9660C /* VMQueryInvalidater.swift */,
 				50000B0B271EA69400B9660C /* VMQueryRegistry.swift */,
 				502EB5B0271D5AC4003D89FC /* VMQueryState.swift */,
 				502EB590271D15FF003D89FC /* VMUserDefaultsCache.swift */,
@@ -124,6 +129,7 @@
 				502EB5A6271D4F4F003D89FC /* VMInMemoryCacheTests.swift */,
 				502EB5BD271D7948003D89FC /* VMPageableCacheKeyTests.swift */,
 				50BE982E27215CE5001EC070 /* VMQueryConsumerTests.swift */,
+				50BE983827217011001EC070 /* VMQueryInvalidaterTests.swift */,
 				50BE982227213C63001EC070 /* VMQueryRegistryTests.swift */,
 				50BE983027215E7C001EC070 /* VMQueryTests.swift */,
 				502EB5A8271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift */,
@@ -292,6 +298,7 @@
 				50BE982F27215CE5001EC070 /* VMQueryConsumerTests.swift in Sources */,
 				502EB5A9271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift in Sources */,
 				50BE982127213951001EC070 /* VMCacheConfigurationTests.swift in Sources */,
+				50BE983927217011001EC070 /* VMQueryInvalidaterTests.swift in Sources */,
 				50BE983127215E7C001EC070 /* VMQueryTests.swift in Sources */,
 				50BE982D272144A0001EC070 /* AtsaniTests.swift in Sources */,
 				502EB5A7271D4F4F003D89FC /* VMInMemoryCacheTests.swift in Sources */,
@@ -314,6 +321,7 @@
 				502EB58F271D15E5003D89FC /* VMInMemoryCache.swift in Sources */,
 				502EB5AF271D5852003D89FC /* VMQuery.swift in Sources */,
 				50000B0A271EA5BA00B9660C /* VMQueryConsumer.swift in Sources */,
+				50000B08271EA21C00B9660C /* VMQueryInvalidater.swift in Sources */,
 				502EB5B1271D5AC4003D89FC /* VMQueryState.swift in Sources */,
 				502EB5BA271D6312003D89FC /* VMPageableCacheKey.swift in Sources */,
 				502EB5B8271D6194003D89FC /* Atsani.swift in Sources */,
