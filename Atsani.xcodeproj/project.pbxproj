@@ -35,6 +35,8 @@
 		50BE983127215E7C001EC070 /* VMQueryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983027215E7C001EC070 /* VMQueryTests.swift */; };
 		50BE983727216BF7001EC070 /* AtsaniKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983627216BF7001EC070 /* AtsaniKey.swift */; };
 		50BE983927217011001EC070 /* VMQueryInvalidaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983827217011001EC070 /* VMQueryInvalidaterTests.swift */; };
+		50BE983C27217718001EC070 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 50BE983B27217718001EC070 /* OHHTTPStubs */; };
+		50BE983E27217718001EC070 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50BE983D27217718001EC070 /* OHHTTPStubsSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				502EB59C271D4EF7003D89FC /* Atsani.framework in Frameworks */,
+				50BE983E27217718001EC070 /* OHHTTPStubsSwift in Frameworks */,
+				50BE983C27217718001EC070 /* OHHTTPStubs in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +214,10 @@
 				502EB59E271D4EF7003D89FC /* PBXTargetDependency */,
 			);
 			name = AtsaniTests;
+			packageProductDependencies = (
+				50BE983B27217718001EC070 /* OHHTTPStubs */,
+				50BE983D27217718001EC070 /* OHHTTPStubsSwift */,
+			);
 			productName = AtsaniTests;
 			productReference = 502EB598271D4EF7003D89FC /* AtsaniTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -261,6 +269,9 @@
 				Base,
 			);
 			mainGroup = 509109AB271B083400174E4D;
+			packageReferences = (
+				50BE983A27217718001EC070 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */,
+			);
 			productRefGroup = 509109B6271B083400174E4D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -599,6 +610,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		50BE983A27217718001EC070 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/OHHTTPStubs.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 9.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		50BE983B27217718001EC070 /* OHHTTPStubs */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50BE983A27217718001EC070 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubs;
+		};
+		50BE983D27217718001EC070 /* OHHTTPStubsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 50BE983A27217718001EC070 /* XCRemoteSwiftPackageReference "OHHTTPStubs" */;
+			productName = OHHTTPStubsSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 509109AC271B083400174E4D /* Project object */;
 }

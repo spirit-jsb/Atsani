@@ -24,7 +24,6 @@ class VMQueryRegistryTests: XCTestCase {
     
     self.cancellables.forEach { $0.cancel() }
   }
-
   
   func test_queryRegistry() {
     let queryRegistry = VMQueryRegistry.shared
