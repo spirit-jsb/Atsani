@@ -113,40 +113,45 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
   
   private func performQuery(forRequestContext requestContext: RequestContext) {
     let cacheKey = self.cacheKeyHandler(self.queryIdentifier, requestContext)
+    let cachedResponse = self.getCacheIfPossibly(forKey: cacheKey)
     
-    if self.cacheConfiguration.usagePolicy == .useDontLoad || self.cacheConfiguration.usagePolicy == .useThenLoad {
-      if let cachedResponse = self.getCacheIfPossibly(forKey: cacheKey) {
-        self.state = .success(cachedResponse)
-      }
+    switch self.cacheConfiguration.usagePolicy {
+      case .useDontLoad where cachedResponse != nil:
+        fallthrough
+      case .useThenLoad where cachedResponse != nil:
+        self.state = .success(cachedResponse!)
+      default:
+        break
     }
     
+    // 如果 cacheConfiguration usagePolicy 为 useDontLoad, 则不应该触发请求
     guard self.cacheConfiguration.usagePolicy != .useDontLoad else {
       return
     }
     
+    // 如果 cacheConfiguration usagePolicy 为 useThenLoad 时, 若 state 状态为 .success(Response)
+    // 则仅将数据写入 cache, 不触发 stage 更改
+    // 若 state 状态为 .loading 或 .idle 则将数据写入 cache, 同时触发 stage 更改
     self.querier(requestContext)
       .sink { (completion) in
-        switch completion {
-          case .failure(let error):
-            if self.cacheConfiguration.usagePolicy == .useWhenLoadFails {
-              if let cachedResponse = self.getCacheIfPossibly(forKey: cacheKey) {
-                self.state = .success(cachedResponse)
-              }
-              else {
-                self.state = .failure(error)
-              }
-            }
-            else {
-              self.state = .failure(error)
-            }
-          case .finished:
+        switch (completion, self.cacheConfiguration.usagePolicy) {
+          case (.failure, .useWhenLoadFails) where cachedResponse != nil:
+            self.state = .success(cachedResponse!)
+          case (.failure(let error), _):
+            self.state = .failure(error)
+          default:
             break
         }
       } receiveValue: { (response) in
-        self.state = .success(response)
-        
         // 缓存数据
         self.cache.cache(forKey: cacheKey, value: response, cacheDate: Date())
+        
+        switch (self.cacheConfiguration.usagePolicy, self.state) {
+          case (.useThenLoad, .success):
+            break
+          default:
+            self.state = .success(response)
+        }
       }
       .store(in: &self.cancellables)
   }
