@@ -15,7 +15,7 @@ public struct VMPageableCacheKey: PageableAtsaniKeyProtocol {
   public let offset: Int
   
   public var keyValue: String {
-    return "\(self.limit)_\(self.offset)"
+    return "\(self.limit)::\(self.offset)".md5()
   }
   
   public var first: Self {

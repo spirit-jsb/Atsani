@@ -132,7 +132,7 @@ public final class VMPageableQuery<RequestContext, Pageable: PageableAtsaniKeyPr
   }
   
   private func performQuery(forRequestContext requestContext: RequestContext, page: Pageable) {
-    let cacheKey = self.cacheKeyHandler(self.queryIdentifier, requestContext).appending(page)
+    let cacheKey = self.cacheKeyHandler(self.queryIdentifier, requestContext).appendingPageable(page)
     let cachedResponse = self.getCacheIfPossibly(forKey: cacheKey)
     
     switch self.cacheConfiguration.usagePolicy {

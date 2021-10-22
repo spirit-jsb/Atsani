@@ -62,7 +62,7 @@ public final class VMUserDefaultsCache: VMCacheProtocol {
 fileprivate extension AtsaniKey {
   
   var cacheDateKeyValue: String {
-    return self.keyValue.appending("_cache_date")
+    return "\(self.keyValue)::cacheDate".md5()
   }
 }
 
