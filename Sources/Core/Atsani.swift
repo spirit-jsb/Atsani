@@ -15,6 +15,12 @@ public protocol AtsaniKeyProtocol {
   var keyValue: String { get }
 }
 
+public protocol PageableAtsaniKeyProtocol: AtsaniKeyProtocol {
+  
+  var first: Self { get }
+  var next: Self { get }
+}
+
 public protocol VMQueryProtocol {
   
   associatedtype RequestContext
@@ -27,12 +33,6 @@ public protocol VMQueryProtocol {
 public protocol VMQueryInvalidateListener {
   
   associatedtype RequestContext
-}
-
-public protocol VMPageableCacheKeyProtocol: AtsaniKeyProtocol {
-  
-  var first: Self { get }
-  var next: Self { get }
 }
 
 public protocol VMCacheProtocol {

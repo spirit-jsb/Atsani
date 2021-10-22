@@ -16,6 +16,10 @@ public struct AtsaniKey: Hashable, AtsaniKeyProtocol {
   public init(value: String) {
     self.keyValue = value
   }
+  
+  public func appending(_ key: AtsaniKeyProtocol) -> AtsaniKey {
+    return AtsaniKey(value: "\(self.keyValue)::\(key.keyValue)")
+  }
 }
 
 internal extension AtsaniKey {

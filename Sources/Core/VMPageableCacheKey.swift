@@ -9,7 +9,7 @@
 
 import Foundation
 
-public struct VMPageableCacheKey: VMPageableCacheKeyProtocol {
+public struct VMPageableCacheKey: PageableAtsaniKeyProtocol {
   
   public let limit: Int
   public let offset: Int
