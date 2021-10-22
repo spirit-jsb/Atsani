@@ -49,4 +49,15 @@ public protocol VMCacheProtocol {
   func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool
 }
 
+internal extension VMQueryProtocol {
+  
+  func eraseToAnyQuery() -> VMAnyQuery<RequestContext, Response> {
+    return VMAnyQuery {
+      return self.state
+    } statePublisherProvider: {
+      return self.statePublisher
+    }
+  }
+}
+
 #endif

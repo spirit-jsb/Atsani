@@ -94,14 +94,6 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
     self.performQuery(forRequestContext: requestContext)
   }
   
-  func eraseToAnyQuery() -> VMAnyQuery<RequestContext, Response> {
-    return VMAnyQuery {
-      return self.state
-    } statePublisherProvider: {
-      return self.statePublisher
-    }
-  }
-  
   private func startQuery(withQueryBehavior queryBehavior: QueryBehavior) {
     switch queryBehavior {
       case .startWhenRequery:
