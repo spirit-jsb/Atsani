@@ -37,6 +37,7 @@
 		50BE983927217011001EC070 /* VMQueryInvalidaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983827217011001EC070 /* VMQueryInvalidaterTests.swift */; };
 		50BE983C27217718001EC070 /* OHHTTPStubs in Frameworks */ = {isa = PBXBuildFile; productRef = 50BE983B27217718001EC070 /* OHHTTPStubs */; };
 		50BE983E27217718001EC070 /* OHHTTPStubsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 50BE983D27217718001EC070 /* OHHTTPStubsSwift */; };
+		50BE984027224F9F001EC070 /* VMMutation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE983F27224F9F001EC070 /* VMMutation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		50BE983027215E7C001EC070 /* VMQueryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryTests.swift; sourceTree = "<group>"; };
 		50BE983627216BF7001EC070 /* AtsaniKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtsaniKey.swift; sourceTree = "<group>"; };
 		50BE983827217011001EC070 /* VMQueryInvalidaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryInvalidaterTests.swift; sourceTree = "<group>"; };
+		50BE983F27224F9F001EC070 /* VMMutation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMMutation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 				50000B0E271EB9E700B9660C /* VMAnyQuery.swift */,
 				502EB592271D249B003D89FC /* VMCacheConfiguration.swift */,
 				502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */,
+				50BE983F27224F9F001EC070 /* VMMutation.swift */,
 				502EB5B9271D6312003D89FC /* VMPageableCacheKey.swift */,
 				502EB5AE271D5852003D89FC /* VMQuery.swift */,
 				50000B09271EA5BA00B9660C /* VMQueryConsumer.swift */,
@@ -336,6 +339,7 @@
 				502EB5B1271D5AC4003D89FC /* VMQueryState.swift in Sources */,
 				502EB5BA271D6312003D89FC /* VMPageableCacheKey.swift in Sources */,
 				502EB5B8271D6194003D89FC /* Atsani.swift in Sources */,
+				50BE984027224F9F001EC070 /* VMMutation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
