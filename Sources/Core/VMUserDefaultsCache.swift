@@ -41,9 +41,10 @@ public final class VMUserDefaultsCache: VMCacheProtocol {
   }
   
   public func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
+    guard let _ = UserDefaults.standard.value(forKey: <#T##String#>)
     switch invalidationPolicy {
       case .notInvalidation:
-        return true
+        return self.caches[key] != nil
       case .expire(let expireTimestamp):
         // 如果无法获取缓存时间, 则认为缓存无效
         guard let cacheDate = UserDefaults.standard.value(forKey: key.cacheDateKeyValue) as? Date else {

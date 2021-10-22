@@ -26,7 +26,6 @@
 		502EB5B8271D6194003D89FC /* Atsani.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB5B7271D6194003D89FC /* Atsani.swift */; };
 		502EB5BA271D6312003D89FC /* VMPageableCacheKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB5B9271D6312003D89FC /* VMPageableCacheKey.swift */; };
 		502EB5BE271D7948003D89FC /* VMPageableCacheKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB5BD271D7948003D89FC /* VMPageableCacheKeyTests.swift */; };
-		50BE982127213951001EC070 /* VMCacheConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982027213951001EC070 /* VMCacheConfigurationTests.swift */; };
 		50BE982327213C63001EC070 /* VMQueryRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982227213C63001EC070 /* VMQueryRegistryTests.swift */; };
 		50BE9827272140AC001EC070 /* InvalidationPolicy+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE9826272140AC001EC070 /* InvalidationPolicy+Tests.swift */; };
 		50BE982927214113001EC070 /* VMQueryState+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982827214113001EC070 /* VMQueryState+Tests.swift */; };
@@ -41,6 +40,7 @@
 		50BE9842272254BA001EC070 /* VMPageableQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE9841272254BA001EC070 /* VMPageableQuery.swift */; };
 		50BE984527225BFF001EC070 /* String+MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE984427225BFF001EC070 /* String+MD5.swift */; };
 		50BE984827225DCB001EC070 /* CryptoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BE984627225C23001EC070 /* CryptoKit.framework */; };
+		50BE984A2722B5B2001EC070 /* VMCacheConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE98492722B5B2001EC070 /* VMCacheConfigurationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +74,6 @@
 		502EB5B9271D6312003D89FC /* VMPageableCacheKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMPageableCacheKey.swift; sourceTree = "<group>"; };
 		502EB5BD271D7948003D89FC /* VMPageableCacheKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMPageableCacheKeyTests.swift; sourceTree = "<group>"; };
 		509109B5271B083400174E4D /* Atsani.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atsani.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		50BE982027213951001EC070 /* VMCacheConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheConfigurationTests.swift; sourceTree = "<group>"; };
 		50BE982227213C63001EC070 /* VMQueryRegistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryRegistryTests.swift; sourceTree = "<group>"; };
 		50BE9826272140AC001EC070 /* InvalidationPolicy+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InvalidationPolicy+Tests.swift"; sourceTree = "<group>"; };
 		50BE982827214113001EC070 /* VMQueryState+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VMQueryState+Tests.swift"; sourceTree = "<group>"; };
@@ -87,6 +86,7 @@
 		50BE9841272254BA001EC070 /* VMPageableQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMPageableQuery.swift; sourceTree = "<group>"; };
 		50BE984427225BFF001EC070 /* String+MD5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+MD5.swift"; sourceTree = "<group>"; };
 		50BE984627225C23001EC070 /* CryptoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoKit.framework; path = System/Library/Frameworks/CryptoKit.framework; sourceTree = SDKROOT; };
+		50BE98492722B5B2001EC070 /* VMCacheConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMCacheConfigurationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 				502EB5AA271D5219003D89FC /* Utils */,
 				50BE982C272144A0001EC070 /* AtsaniTests.swift */,
 				50000B10271ED05D00B9660C /* VMAnyQueryTests.swift */,
-				50BE982027213951001EC070 /* VMCacheConfigurationTests.swift */,
+				50BE98492722B5B2001EC070 /* VMCacheConfigurationTests.swift */,
 				502EB5A6271D4F4F003D89FC /* VMInMemoryCacheTests.swift */,
 				502EB5BD271D7948003D89FC /* VMPageableCacheKeyTests.swift */,
 				50BE982E27215CE5001EC070 /* VMQueryConsumerTests.swift */,
@@ -329,8 +329,8 @@
 				50BE9827272140AC001EC070 /* InvalidationPolicy+Tests.swift in Sources */,
 				50BE982F27215CE5001EC070 /* VMQueryConsumerTests.swift in Sources */,
 				502EB5A9271D4F5C003D89FC /* VMUserDefaultsCacheTests.swift in Sources */,
-				50BE982127213951001EC070 /* VMCacheConfigurationTests.swift in Sources */,
 				50BE983927217011001EC070 /* VMQueryInvalidaterTests.swift in Sources */,
+				50BE984A2722B5B2001EC070 /* VMCacheConfigurationTests.swift in Sources */,
 				50BE983127215E7C001EC070 /* VMQueryTests.swift in Sources */,
 				50BE982D272144A0001EC070 /* AtsaniTests.swift in Sources */,
 				502EB5A7271D4F4F003D89FC /* VMInMemoryCacheTests.swift in Sources */,

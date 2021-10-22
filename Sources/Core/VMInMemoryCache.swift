@@ -32,16 +32,16 @@ public final class VMInMemoryCache: VMCacheProtocol {
   }
   
   public func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
+    guard let cache = self.caches[key] else {
+      return false
+    }
+    
     switch invalidationPolicy {
       case .notInvalidation:
         return true
       case .expire(let expireTimestamp):
-        let cache = self.caches[key]
-        
-        // 如果无法获取缓存时间, 则认为缓存无效
-        guard let cacheDate = cache?.cacheDate else {
-          return false
-        }
+        // 获取缓存时间
+        let cacheDate = cache.cacheDate
         
         // 计算出缓存失效时间
         let expireDate = Calendar.current.date(byAdding: .second, value: Int(expireTimestamp), to: cacheDate)

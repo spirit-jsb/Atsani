@@ -11,49 +11,52 @@ import Combine
 
 class VMAnyQueryTests: XCTestCase {
   
-  @Published private var testState: VMQueryState<String> = .idle
+  @Published private var state: VMQueryState<String> = .idle
   
-  private var testStatePublisher: AnyPublisher<VMQueryState<String>, Never> {
-    return self.$testState.eraseToAnyPublisher()
+  private var statePublisher: AnyPublisher<VMQueryState<String>, Never> {
+    return self.$state.eraseToAnyPublisher()
   }
   
   private var cancellables = Set<AnyCancellable>()
-  
+
   override func tearDown() {
     super.tearDown()
     
+    // 重制 state
+    self.state = .idle
+
     self.cancellables.forEach { $0.cancel() }
   }
   
   func test_anyQuery() {
-    let expectation = expectation(description: "test anyQuery statePublisher")
+    let expectation = expectation(description: "test anyQuery")
     
-    let anyQuery = VMAnyQuery<Void, String>(stateProvider: { self.testState }, statePublisherProvider: { self.testStatePublisher })
+    let anyQuery = VMAnyQuery<Void, String>(stateProvider: { self.state }, statePublisherProvider: { self.statePublisher })
     
-    var statePublisherResults: [VMQueryState<String>] = []
+    var stateResults: [VMQueryState<String>] = []
     anyQuery.statePublisher
       .dropFirst()
       .sink { (state) in
-        statePublisherResults.append(state)
+        stateResults.append(state)
       }
       .store(in: &self.cancellables)
     
-    self.testState = .idle
+    self.state = .idle
     XCTAssertEqual(anyQuery.state, .idle)
-    
-    self.testState = .loading
+
+    self.state = .loading
     XCTAssertEqual(anyQuery.state, .loading)
-    
-    self.testState = .success("success")
+
+    self.state = .success("success")
     XCTAssertEqual(anyQuery.state, .success("success"))
-    
-    self.testState = .failure(AtsaniTestError.testFailure)
+
+    self.state = .failure(AtsaniTestError.testFailure)
     XCTAssertEqual(anyQuery.state, .failure(AtsaniTestError.testFailure))
-    
+
     expectation.fulfill()
     
     waitForExpectations(timeout: 5) { _ in
-      XCTAssertEqual(statePublisherResults, [.idle, .loading, .success("success"), .failure(AtsaniTestError.testFailure)])
+      XCTAssertEqual(stateResults, [.idle, .loading, .success("success"), .failure(AtsaniTestError.testFailure)])
     }
   }
 }

@@ -2,18 +2,18 @@
 //  VMCacheConfigurationTests.swift
 //  AtsaniTests
 //
-//  Created by max on 2021/10/21.
+//  Created by max on 2021/10/22.
 //
 
 import XCTest
 @testable import Atsani
 
 class VMCacheConfigurationTests: XCTestCase {
-  
+
   func test_defaultCacheConfiguration() {
-    let `default` = VMCacheConfiguration.default
+    let defaultCacheConfiguration = VMCacheConfiguration.default
     
-    XCTAssertEqual(`default`.invalidationPolicy, .notInvalidation)
-    XCTAssertEqual(`default`.usagePolicy, .useWhenLoadFails)
+    XCTAssertEqual(defaultCacheConfiguration.invalidationPolicy, .notInvalidation)
+    XCTAssertEqual(defaultCacheConfiguration.usagePolicy, .useWhenLoadFails)
   }
 }
