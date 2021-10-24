@@ -32,6 +32,7 @@ public final class VMInMemoryCache: VMCacheProtocol {
   }
   
   public func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
+    // 确保是存在需要查找的缓存的
     guard let cache = self.caches[key] else {
       return false
     }
