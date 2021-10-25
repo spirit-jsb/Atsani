@@ -10,7 +10,7 @@
 import Foundation
 import Combine
 
-public final class VMPageableQuery<RequestContext, Pageable: PageableAtsaniKeyProtocol, Response: Codable & Sequence>: ObservableObject, VMQueryProtocol, VMQueryInvalidateListener {
+public final class VMPageableQuery<RequestContext, Pageable: PageableAtsaniKeyProtocol, Response: Codable & Collection>: ObservableObject, VMQueryProtocol, VMQueryInvalidateListener {
   
   public typealias CacheKeyHandler = (AtsaniKey, RequestContext) -> AtsaniKey
   public typealias Querier = (RequestContext, Pageable) -> AnyPublisher<Response, Error>
