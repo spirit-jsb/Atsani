@@ -28,6 +28,7 @@
 		502EB5BE271D7948003D89FC /* VMPageableCacheKeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502EB5BD271D7948003D89FC /* VMPageableCacheKeyTests.swift */; };
 		50623BB127259E9E0032B9B5 /* URL+Atsani.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623BB027259E9E0032B9B5 /* URL+Atsani.swift */; };
 		50623BB327259EAB0032B9B5 /* String+Atsani.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623BB227259EAB0032B9B5 /* String+Atsani.swift */; };
+		50623BB52725BBE50032B9B5 /* VMListableQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50623BB42725BBE50032B9B5 /* VMListableQuery.swift */; };
 		50BE982327213C63001EC070 /* VMQueryRegistryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982227213C63001EC070 /* VMQueryRegistryTests.swift */; };
 		50BE9827272140AC001EC070 /* InvalidationPolicy+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE9826272140AC001EC070 /* InvalidationPolicy+Tests.swift */; };
 		50BE982927214113001EC070 /* VMQueryState+Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BE982827214113001EC070 /* VMQueryState+Tests.swift */; };
@@ -77,6 +78,7 @@
 		502EB5BD271D7948003D89FC /* VMPageableCacheKeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMPageableCacheKeyTests.swift; sourceTree = "<group>"; };
 		50623BB027259E9E0032B9B5 /* URL+Atsani.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Atsani.swift"; sourceTree = "<group>"; };
 		50623BB227259EAB0032B9B5 /* String+Atsani.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Atsani.swift"; sourceTree = "<group>"; };
+		50623BB42725BBE50032B9B5 /* VMListableQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMListableQuery.swift; sourceTree = "<group>"; };
 		509109B5271B083400174E4D /* Atsani.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Atsani.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		50BE982227213C63001EC070 /* VMQueryRegistryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VMQueryRegistryTests.swift; sourceTree = "<group>"; };
 		50BE9826272140AC001EC070 /* InvalidationPolicy+Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InvalidationPolicy+Tests.swift"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				50000B0E271EB9E700B9660C /* VMAnyQuery.swift */,
 				502EB592271D249B003D89FC /* VMCacheConfiguration.swift */,
 				502EB58E271D15E5003D89FC /* VMInMemoryCache.swift */,
+				50623BB42725BBE50032B9B5 /* VMListableQuery.swift */,
 				50BE983F27224F9F001EC070 /* VMMutation.swift */,
 				502EB5B9271D6312003D89FC /* VMPageableCacheKey.swift */,
 				50BE9841272254BA001EC070 /* VMPageableQuery.swift */,
@@ -360,6 +363,7 @@
 				502EB5AF271D5852003D89FC /* VMQuery.swift in Sources */,
 				50000B0A271EA5BA00B9660C /* VMQueryConsumer.swift in Sources */,
 				50000B08271EA21C00B9660C /* VMQueryInvalidater.swift in Sources */,
+				50623BB52725BBE50032B9B5 /* VMListableQuery.swift in Sources */,
 				50623BB327259EAB0032B9B5 /* String+Atsani.swift in Sources */,
 				50623BB127259E9E0032B9B5 /* URL+Atsani.swift in Sources */,
 				502EB5B1271D5AC4003D89FC /* VMQueryState.swift in Sources */,
