@@ -20,6 +20,10 @@ public struct AtsaniKey: Hashable, AtsaniKeyProtocol {
   public func appendingPageable(_ pageable: AtsaniKeyProtocol) -> AtsaniKey {
     return AtsaniKey(value: "\(self.keyValue)::\(pageable.keyValue)".md5())
   }
+  
+  public func appendingSuffix(_ suffix: String) -> AtsaniKey {
+    return AtsaniKey(value: "\(self.keyValue)::\(suffix)".md5())
+  }
 }
 
 internal extension AtsaniKey {
