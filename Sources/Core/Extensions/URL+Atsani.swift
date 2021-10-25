@@ -11,13 +11,16 @@ import Foundation
 
 extension URL {
   
-  public var isPageable: Bool {
-    let pageable = ["limit", "offset"]
-    let urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true)
-    
-    let pageableUrlComponents = urlComponents.flatMap({ $0.queryItems?.map({ $0.name }).filter({ pageable.contains($0) }) }) ?? []
-    
-    return Set(pageableUrlComponents) == Set(pageable)
+  public var isPageable: Bool {        
+    return URLComponents(url: self, resolvingAgainstBaseURL: true).flatMap({ $0.queryItems?.map({ $0.name }) })?.contains("limit") ?? false
+  }
+  
+  public var limit: Int? {
+    return URLComponents(url: self, resolvingAgainstBaseURL: true).flatMap({ $0.queryItems?.filter({ $0.name == "limit" }) })?.first?.value.flatMap({ Int($0) })
+  }
+  
+  public var offset: Int? {
+    return URLComponents(url: self, resolvingAgainstBaseURL: true).flatMap({ $0.queryItems?.filter({ $0.name == "offset" }) })?.first?.value.flatMap({ Int($0) })
   }
 }
 
