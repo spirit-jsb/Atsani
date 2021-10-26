@@ -20,9 +20,9 @@ public final class VMQueryConsumer<RequestContext, Response: Codable>: Observabl
     return self.anyQuery.statePublisher.eraseToAnyPublisher()
   }
   
-  public var valuePublisher: AnyPublisher<Response, Never> {
+  public var valuePublisher: AnyPublisher<Response, Error> {
     return self.anyQuery.statePublisher
-      .compactMap { $0.value }
+      .tryCompactMap { try $0.value() }
       .eraseToAnyPublisher()
   }
   

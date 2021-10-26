@@ -28,9 +28,9 @@ public final class VMPageableQuery<RequestContext, Pageable: PageableAtsaniKeyPr
     return self.$state.eraseToAnyPublisher()
   }
   
-  public var valuePublisher: AnyPublisher<Response, Never> {
+  public var valuePublisher: AnyPublisher<Response, Error> {
     return self.$state
-      .compactMap { $0.value }
+      .tryCompactMap { try $0.value() }
       .eraseToAnyPublisher()
   }
   

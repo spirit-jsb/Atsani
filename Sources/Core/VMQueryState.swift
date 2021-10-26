@@ -16,10 +16,12 @@ public enum VMQueryState<Response> {
   case success(Response)
   case failure(Error)
   
-  public var value: Response? {
+  public func value() throws -> Response? {
     switch self {
       case .success(let response):
         return response
+      case .failure(let error):
+        throw error
       default:
         return nil
     }
