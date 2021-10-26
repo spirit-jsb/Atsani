@@ -14,22 +14,22 @@ public struct AtsaniKey: Hashable, AtsaniKeyProtocol {
   public let keyValue: String
   
   public init(value: String) {
-    self.keyValue = value.md5()
+    self.keyValue = value
   }
   
   public func appendingPageable(_ pageable: AtsaniKeyProtocol) -> AtsaniKey {
-    return AtsaniKey(value: "\(self.keyValue)::\(pageable.keyValue)".md5())
+    return AtsaniKey(value: "\(self.keyValue)::\(pageable.keyValue)")
   }
   
   public func appendingSuffix(_ suffix: String) -> AtsaniKey {
-    return AtsaniKey(value: "\(self.keyValue)::\(suffix)".md5())
+    return AtsaniKey(value: "\(self.keyValue)::\(suffix)")
   }
 }
 
 internal extension AtsaniKey {
   
   var invalidateQuery: Notification.Name {
-    return .init(rawValue: "\(self.keyValue)::invalidateQueryNotification".md5())
+    return .init(rawValue: "\(self.keyValue)::invalidateQueryNotification")
   }
 }
 
