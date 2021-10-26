@@ -10,6 +10,10 @@
 import Foundation
 import Combine
 
+public enum AtsaniError: Error {
+  case fetchRegisteredQueryFailure
+}
+
 public protocol AtsaniKeyProtocol {
   
   var keyValue: String { get }

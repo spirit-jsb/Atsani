@@ -32,12 +32,16 @@ public final class VMQueryConsumer<RequestContext, Response: Codable>: Observabl
   
   private var cancellables = Set<AnyCancellable>()
   
-  public init(queryIdentifier: AtsaniKey) {
+  public init(queryIdentifier: AtsaniKey) throws {
     self.queryIdentifier = queryIdentifier
     
-    self.anyQuery = VMQueryRegistry.shared.fetchAnyQuery(forIdentifier: queryIdentifier)!
+    guard let registeredQuery: VMAnyQuery<RequestContext, Response> = VMQueryRegistry.shared.fetchAnyQuery(forIdentifier: queryIdentifier) else {
+      throw AtsaniError.fetchRegisteredQueryFailure
+    }
     
-    self.anyQuery.statePublisher
+    self.anyQuery = registeredQuery
+    
+    registeredQuery.statePublisher
       .sink { [weak self] (_) in
         self?.objectWillChange.send()
       }
