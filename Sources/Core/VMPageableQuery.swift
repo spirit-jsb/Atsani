@@ -108,7 +108,7 @@ public final class VMPageableQuery<RequestContext, Pageable: PageableAtsaniKeyPr
     self.currentPage = self.currentPage.next
     
     if self.cacheConfiguration.usagePolicy == .useWhenLoadFails || self.cacheConfiguration.usagePolicy == .useThenLoad {
-      self.state = .loadMore
+      self.state = .loading
     }
     
     self.performQuery(forRequestContext: requestContext, page: self.currentPage)

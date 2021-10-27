@@ -12,7 +12,6 @@ import Foundation
 public enum VMQueryState<Response> {
   case idle
   case loading
-  case loadMore
   case success(Response)
   case failure(Error)
   
