@@ -135,35 +135,35 @@ public final class VMListableQuery<RequestContext: Collection, Response: Collect
     }
     
     // 如果 cacheConfiguration usagePolicy 为 useThenLoad 时, 若 state 状态为 .success(Response)
-    // 则仅将数据写入 cache, 不触发 stage 更改
-    // 若 state 状态为 .loading 或 .idle 则将数据写入 cache, 同时触发 stage 更改
+    // 则仅将数据写入 cache, 不触发 state 更改
+    // 若 state 状态为 .loading 或 .idle 则将数据写入 cache, 同时触发 state 更改
     self.querier(requestContext)
-      .sink { (completion) in
-        switch (completion, self.cacheConfiguration.usagePolicy) {
+      .sink { [weak self] (completion) in
+        switch (completion, self?.cacheConfiguration.usagePolicy) {
           case (.failure, .useWhenLoadFails) where !cachedResponses.isEmpty && cachedResponses.count == requestContext.count:
-            self.state = .success(cachedResponses)
+            self?.state = .success(cachedResponses)
           case (.failure(let error), _):
-            self.state = .failure(error)
+            self?.state = .failure(error)
           default:
             break
         }
-      } receiveValue: { (responses) in
+      } receiveValue: { [weak self] (responses) in
         // 缓存数据
         cacheKeys.enumerated().forEach { (index, cacheKey) in
           let requestContextIndex = requestContext.index(requestContext.startIndex, offsetBy: index)
           
-          guard let needCachedResponse = self.cacheHandler(requestContext[requestContextIndex], responses) else {
+          guard let needCachedResponse = self?.cacheHandler(requestContext[requestContextIndex], responses) else {
             return
           }
           
-          self.cache.cache(forKey: cacheKey, value: needCachedResponse, cacheDate: Date())
+          self?.cache.cache(forKey: cacheKey, value: needCachedResponse, cacheDate: Date())
         }
         
-        switch (self.cacheConfiguration.usagePolicy, self.state) {
-          case (.useThenLoad, .success):
-            break
+        switch self?.state {
+          case .loading:
+            self?.state = .success(responses)
           default:
-            self.state = .success(responses)
+            break
         }
       }
       .store(in: &self.cancellables)

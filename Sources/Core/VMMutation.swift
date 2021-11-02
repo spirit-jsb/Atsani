@@ -29,15 +29,15 @@ public final class VMMutation<RequestContext, Response: Codable>: ObservableObje
     self.state = .loading
     
     self.querier(requestContext)
-      .sink { (completion) in
+      .sink { [weak self] (completion) in
         switch completion {
           case .failure(let error):
-            self.state = .failure(error)
+            self?.state = .failure(error)
           case .finished:
             break
         }
-      } receiveValue: { (response) in
-        self.state = .success(response)
+      } receiveValue: { [weak self] (response) in
+        self?.state = .success(response)
         
         let queryInvalidater = VMQueryInvalidater<RequestContext>()
         mutation(response, queryInvalidater.invalidateQuery)

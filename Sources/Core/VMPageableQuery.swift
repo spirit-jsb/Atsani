@@ -150,27 +150,27 @@ public final class VMPageableQuery<RequestContext, Pageable: PageableAtsaniKeyPr
     }
     
     // 如果 cacheConfiguration usagePolicy 为 useThenLoad 时, 若 state 状态为 .success(Response)
-    // 则仅将数据写入 cache, 不触发 stage 更改
-    // 若 state 状态为 .loading 或 .idle 则将数据写入 cache, 同时触发 stage 更改
+    // 则仅将数据写入 cache, 不触发 state 更改
+    // 若 state 状态为 .loading 或 .idle 则将数据写入 cache, 同时触发 state 更改
     self.querier(requestContext, page)
-      .sink { (completion) in
-        switch (completion, self.cacheConfiguration.usagePolicy) {
+      .sink { [weak self] (completion) in
+        switch (completion, self?.cacheConfiguration.usagePolicy) {
           case (.failure, .useWhenLoadFails) where cachedResponse != nil:
-            self.state = .success(cachedResponse!)
+            self?.state = .success(cachedResponse!)
           case (.failure(let error), _):
-            self.state = .failure(error)
+            self?.state = .failure(error)
           default:
             break
         }
-      } receiveValue: { (response) in
+      } receiveValue: { [weak self] (response) in
         // 缓存数据
-        self.cache.cache(forKey: cacheKey, value: response, cacheDate: Date())
+        self?.cache.cache(forKey: cacheKey, value: response, cacheDate: Date())
         
-        switch (self.cacheConfiguration.usagePolicy, self.state) {
-          case (.useThenLoad, .success):
-            break
+        switch self?.state {
+          case .loading:
+            self?.state = .success(response)
           default:
-            self.state = .success(response)
+            break
         }
       }
       .store(in: &self.cancellables)
