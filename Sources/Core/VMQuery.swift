@@ -75,6 +75,24 @@ public final class VMQuery<RequestContext, Response: Codable>: ObservableObject,
       }
       .store(in: &self.cancellables)
     
+    self.queryStateReplaceListener(forIdentifier: queryIdentifier)
+      .sink { [weak self] (_) in
+        guard let self = self else { return }
+        
+        if let requestContext = self.lastRequestContext {
+          let cacheKey = self.cacheKeyHandler(self.queryIdentifier, requestContext)
+          let cachedResponse = self.getCacheIfPossibly(forKey: cacheKey)
+          
+          if let cachedResponse = cachedResponse {
+            self.state = .success(cachedResponse)
+          }
+          else {
+            self.requery(forRequestContext: requestContext)
+          }
+        }
+      }
+      .store(in: &self.cancellables)
+    
     VMQueryRegistry.shared.register(forIdentifier: queryIdentifier, anyQuery: self.eraseToAnyQuery())
   }
   

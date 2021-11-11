@@ -14,6 +14,7 @@ public final class VMMutation<RequestContext, Response: Codable>: ObservableObje
   
   public typealias Querier = (RequestContext) -> AnyPublisher<Response, Error>
   public typealias Mutation = (Response, (AtsaniKey, VMQueryInvalidater<RequestContext>.InvalidationRequestContext) -> Void) -> Void
+  public typealias Replace = (Response, (AtsaniKey) -> Void) -> Void
   
   @Published public private(set) var state: VMQueryState<Response> = .idle
   
@@ -41,6 +42,26 @@ public final class VMMutation<RequestContext, Response: Codable>: ObservableObje
         
         let queryInvalidater = VMQueryInvalidater<RequestContext>()
         mutation(response, queryInvalidater.invalidateQuery)
+      }
+      .store(in: &self.cancellables)
+  }
+  
+  public func remutation(forRequestContext requestContext: RequestContext, replace: @escaping Replace) {
+    self.state = .loading
+    
+    self.querier(requestContext)
+      .sink { [weak self] (completion) in
+        switch completion {
+          case .failure(let error):
+            self?.state = .failure(error)
+          case .finished:
+            break
+        }
+      } receiveValue: { [weak self] (response) in
+        self?.state = .success(response)
+        
+        let queryInvalidater = VMQueryInvalidater<RequestContext>()
+        replace(response, queryInvalidater.replaceQueryState)
       }
       .store(in: &self.cancellables)
   }

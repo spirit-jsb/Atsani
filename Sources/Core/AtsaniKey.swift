@@ -31,6 +31,10 @@ internal extension AtsaniKey {
   var invalidateQuery: Notification.Name {
     return .init(rawValue: "\(self.keyValue)::invalidateQueryNotification")
   }
+  
+  var replaceQueryState: Notification.Name {
+    return .init(rawValue: "\(self.keyValue)::replaceQueryStateNotification")
+  }
 }
 
 #endif
