@@ -14,24 +14,46 @@ public final class VMInMemoryCache: VMCacheProtocol {
   public static let shared = VMInMemoryCache()
   
   private var caches: [AtsaniKey: (value: Any?, cacheDate: Date)] = [:]
+
+  private let _lock = NSLock()
   
   private init() {
     
   }
   
   public func cache<Value>(forKey key: AtsaniKey, value: Value, cacheDate: Date) where Value : Decodable, Value : Encodable {
+    self._lock.lock()
+    defer {
+      self._lock.unlock()
+    }
+    
     self.caches[key] = (value: value, cacheDate: cacheDate)
   }
   
   public func invalidate(forKey key: AtsaniKey) {
+    self._lock.lock()
+    defer {
+      self._lock.unlock()
+    }
+    
     self.caches[key] = nil
   }
   
   public func fetchCache<Value>(forKey key: AtsaniKey) -> Value? where Value : Decodable, Value : Encodable {
+    self._lock.lock()
+    defer {
+      self._lock.unlock()
+    }
+    
     return self.caches[key]?.value as? Value
   }
   
   public func isCacheValueValid(forKey key: AtsaniKey, validDate: Date, invalidationPolicy: VMCacheConfiguration.InvalidationPolicy) -> Bool {
+    self._lock.lock()
+    defer {
+      self._lock.unlock()
+    }
+    
     // 确保是存在需要查找的缓存的
     guard let cache = self.caches[key] else {
       return false
